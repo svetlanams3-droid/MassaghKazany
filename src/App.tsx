@@ -129,8 +129,8 @@ export default function App() {
     if (isAdmin) {
       const newUrl = prompt('Введите URL нового изображения:');
       if (newUrl) {
-        const img = document.getElementById(imgId) as HTMLImageElement;
-        if (img) img.src = newUrl;
+        const el = document.getElementById(imgId) as HTMLElement;
+        if (el) el.style.backgroundImage = `url('${newUrl}')`;
       }
     }
   };
@@ -219,12 +219,10 @@ export default function App() {
             </div>
           </div>
           <div className="order-1 md:order-2 px-2 sm:px-0">
-            <div className={`relative h-[240px] sm:h-[320px] md:h-[450px] bg-cover bg-center rounded-3xl shadow-xl overflow-hidden ${imageClass()}`}
+            <div id="hero-image"
+                 className={`relative h-[240px] sm:h-[320px] md:h-[450px] bg-cover bg-center rounded-3xl shadow-xl overflow-hidden ${imageClass()}`}
+                 style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop')" }}
                  onClick={() => handleImageClick('hero-image')}>
-              <img id="hero-image"
-                   src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&h=600&fit=crop"
-                   alt="Массажный салон"
-                   className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
@@ -300,12 +298,10 @@ export default function App() {
       <section id="about" className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className={`aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ${imageClass()}`}
+            <div id="about-image"
+                 className={`aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-cover bg-center ${imageClass()}`}
+                 style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db872?w=800&h=600&fit=crop')" }}
                  onClick={() => handleImageClick('about-image')}>
-              <img id="about-image"
-                   src="https://images.unsplash.com/photo-1544161515-4ab6ce6db872?w=800&h=600&fit=crop"
-                   alt="Интерьер салона"
-                   className="w-full h-full object-cover" />
             </div>
             <div>
               <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-[#2D5A27] ${editableClass()}`}
